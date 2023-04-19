@@ -34,10 +34,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             <Widget>[
-              Icon(
+              const Icon(
                 Icons.movie_creation_rounded,
                 size: 55,
-                color: Colors.grey.shade300,
+                color: Colors.blue,
               ),
               const SizedBox(
                 width: 11,
@@ -126,7 +126,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ).gestures(onTap: (){
                       launchUrl(Uri.parse(creator.url),);
-                        }),
+                    }),
                   ),
                 ].toRow(
                   separator: const Text(' | ').bold(),

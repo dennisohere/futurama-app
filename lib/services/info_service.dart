@@ -2,7 +2,6 @@
 import 'package:futurama/data/show/show.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../utils/helpers.dart';
 import 'http_service.dart';
 
 

@@ -49,8 +49,12 @@ class _BottomNavState extends ConsumerState<BottomNav> {
 
     final currentRouteName = NavigationService().currentRouteName;
 
-    final index = _menu.keys.toList().indexOf(currentRouteName!);
-    _currentIndex = index >= 0 ? index : 0;
+    if(currentRouteName == '/'){
+      _currentIndex = 0;
+      return ;
+    }
+
+    _currentIndex = _menu.keys.toList().indexOf(currentRouteName!);
   }
 
   @override
