@@ -84,28 +84,24 @@ class _QuizQuestionPageState extends ConsumerState<QuizQuestionPage> {
           icon: const Icon(Icons.check_circle),
           onPressed: selectedAnswer.isNotEmpty
               ? () {
-                  if (selectedAnswer == widget.quiz.correctAnswer.toString()) {
-                    ref
-                        .read(correctAnswersProvider.notifier)
-                        .state
-                        .add(widget.quiz);
+                  final isCorrect = ref
+                      .read(quizServiceProvider)
+                      .saveAnswer(selectedAnswer: selectedAnswer, quiz: widget.quiz);
+
+                  if(isCorrect){
                     EasyLoading.showSuccess('Correct',
                         duration: const Duration(milliseconds: 250));
                   } else {
-                    ref.read(incorrectAnswersProvider.notifier)
-                        .state
-                        .add(widget.quiz);
                     EasyLoading.showError('Wrong',
                         duration: const Duration(milliseconds: 250));
                   }
 
                   widget.onPageSubmitted.call();
-
-          }
+                }
               : null,
-          label: Text(widget.currentPage == widget.totalPages ? 'Finish' : 'Next')
-              .fontSize(18)),
-
+          label:
+              Text(widget.currentPage == widget.totalPages ? 'Finish' : 'Next')
+                  .fontSize(18)),
     ]
         .toColumn(
           crossAxisAlignment: CrossAxisAlignment.stretch,

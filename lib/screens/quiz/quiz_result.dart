@@ -32,7 +32,8 @@ class _QuizResultScreenState extends ConsumerState<QuizResultScreen> {
           const SizedBox(width: 11,),
           const Text('out of').fontSize(22).bold(),
           const SizedBox(width: 11,),
-          Text('${incorrectQuestions.length + correctQuestions.length}').bold().fontSize(55),
+          Text('${incorrectQuestions.length + correctQuestions.length}')
+              .textColor(Colors.black54).bold().fontSize(55),
         ].toRow(mainAxisAlignment: MainAxisAlignment.center)
         .padding(bottom: 35),
 

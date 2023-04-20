@@ -7,8 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:futurama/app.dart';
+import 'package:futurama/data/quiz/quiz.dart';
 
 import 'package:futurama/main.dart';
+import 'package:futurama/services/quiz_service.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -27,4 +31,19 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+
+  group('Quiz', () {
+    test('test quiz answer', () async {
+      final ref = ProviderContainer();
+
+      const quiz = Quiz(id: 1, question: "Where is London?", possibleAnswers: [
+        "England", "France", "Germany", "Portugal", "Chile"
+      ], correctAnswer: "England");
+
+      final response = ref.read(quizServiceProvider).saveAnswer(selectedAnswer: 'England', quiz: quiz);
+
+      expect(response, true);
+    });
+  });
+
 }
