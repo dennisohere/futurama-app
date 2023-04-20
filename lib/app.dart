@@ -20,15 +20,14 @@ class _MyAppState extends State<MyApp> {
     final navigationService = NavigationService();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      builder: (context, child) {
+      builder: EasyLoading.init(builder: (context, child){
         ScreenUtil.init(context);
-        EasyLoading.init();
 
         return Theme(
           data: ThemeData.light(),
           child: child!,
         );
-      },
+      }),
       localizationsDelegates: const [
         FormBuilderLocalizations.delegate,
       ],

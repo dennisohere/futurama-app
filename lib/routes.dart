@@ -3,8 +3,11 @@ import 'package:futurama/data/character/character.dart';
 import 'package:futurama/screens/character/characters.dart';
 import 'package:futurama/screens/character/characters_detail.dart';
 import 'package:futurama/screens/home.dart';
+import 'package:futurama/screens/quiz/quiz_result.dart';
+import 'package:futurama/screens/quiz/take_quiz.dart';
 import 'package:futurama/utils/route_paths.dart';
 
+import 'screens/quiz/quiz.dart';
 import 'services/navigation_service.dart';
 
 
@@ -24,6 +27,14 @@ Route routes(RouteSettings settings) {
           final character = settings.arguments as Character;
           return CharacterDetailScreen(character: character);
 
+        case RoutePaths.quizScreen:
+          return const QuizScreen();
+
+        case RoutePaths.takeQuizScreen:
+          return const TakeQuizScreen();
+
+        case RoutePaths.quizResultScreen:
+          return const QuizResultScreen();
         default:
           return const HomeScreen();
       }
